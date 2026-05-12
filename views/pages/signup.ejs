@@ -56,86 +56,92 @@
                 <form action="/signup" method="POST">
                     <!-- Name -->
                     <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-semibold mb-2" for="name">
-                            Full Name
+                        <label class="block text-gray-500 text-[10px] font-black uppercase tracking-widest mb-2 flex items-center gap-2" for="name">
+                            <iconify-icon icon="solar:user-bold-duotone" class="text-secondary"></iconify-icon> Full Name
                         </label>
                         <input 
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" 
+                            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white transition-all" 
                             id="name" 
                             name="name" 
                             type="text"
+                            placeholder="Enter your full name"
                             required
                         >
                     </div>
 
                     <!-- Email -->
                     <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-semibold mb-2" for="email">
-                            Email Address
+                        <label class="block text-gray-500 text-[10px] font-black uppercase tracking-widest mb-2 flex items-center gap-2" for="email">
+                            <iconify-icon icon="solar:letter-bold-duotone" class="text-secondary"></iconify-icon> Email Address
                         </label>
                         <input 
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" 
+                            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white transition-all" 
                             id="email" 
                             name="email" 
                             type="email"
+                            placeholder="your@email.com"
                             required
                         >
                     </div>
 
                     <!-- Phone -->
                     <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-semibold mb-2" for="phone">
-                            Phone Number
+                        <label class="block text-gray-500 text-[10px] font-black uppercase tracking-widest mb-2 flex items-center gap-2" for="phone">
+                            <iconify-icon icon="solar:phone-bold-duotone" class="text-secondary"></iconify-icon> Phone Number
                         </label>
                         <input 
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" 
+                            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white transition-all" 
                             id="phone" 
                             name="phone" 
                             type="tel"
                             pattern="[0-9]{10}"
+                            placeholder="1234567890"
                             required
                         >
                     </div>
 
-                    <!-- College -->
+                    <!-- Location/Organization -->
                     <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-semibold mb-2" for="college">
-                            College Name
+                        <label class="block text-gray-500 text-[10px] font-black uppercase tracking-widest mb-2 flex items-center gap-2" for="college">
+                            <iconify-icon icon="solar:map-point-wave-bold-duotone" class="text-secondary"></iconify-icon> Location / Organization
                         </label>
                         <input 
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" 
+                            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white transition-all" 
                             id="college" 
                             name="college" 
                             type="text"
+                            placeholder="e.g. City or Workplace"
                             required
                         >
                     </div>
 
                     <!-- Password -->
                     <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-semibold mb-2" for="password">
-                            Password
+                        <label class="block text-gray-500 text-[10px] font-black uppercase tracking-widest mb-2 flex items-center gap-2" for="password">
+                            <iconify-icon icon="solar:lock-password-bold-duotone" class="text-secondary"></iconify-icon> Password
                         </label>
                         <input 
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" 
+                            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white transition-all" 
                             id="password" 
                             name="password" 
                             type="password"
+                            placeholder="••••••••"
                             minlength="6"
                             required
                         >
                     </div>
 
                     <!-- Confirm Password -->
-                    <div class="mb-6">
-                        <label class="block text-gray-700 text-sm font-semibold mb-2" for="confirmPassword">
-                            Confirm Password
+                    <div class="mb-8">
+                        <label class="block text-gray-500 text-[10px] font-black uppercase tracking-widest mb-2 flex items-center gap-2" for="confirmPassword">
+                            <iconify-icon icon="solar:shield-check-bold-duotone" class="text-secondary"></iconify-icon> Confirm Password
                         </label>
                         <input 
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" 
+                            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white transition-all" 
                             id="confirmPassword" 
                             name="confirmPassword" 
                             type="password"
+                            placeholder="••••••••"
                             minlength="6"
                             required
                         >
@@ -143,10 +149,11 @@
 
                     <!-- Submit Button -->
                     <button 
-                        class="w-full bg-secondary text-white font-semibold py-3 px-4 rounded-lg hover:bg-cyan-500 transition-all hover:scale-105 shadow-lg"
+                        class="w-full bg-secondary text-white font-bold py-4 px-6 rounded-xl hover:bg-cyan-500 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-secondary/25 flex items-center justify-center gap-2"
                         type="submit"
                     >
-                        Sign Up
+                        <iconify-icon icon="solar:user-plus-bold-duotone" class="text-xl"></iconify-icon>
+                        Create Account
                     </button>
                 </form>
 

@@ -1,66 +1,67 @@
-# Ride Sharing Platform 
+# 🚗 WayMate - Community Transit Network
 
-A web platform for college students to share rides, save money, and connect with fellow students.
+A modern web platform for local communities and workplaces to share rides, save costs, and connect. WayMate makes every journey more social and sustainable by connecting people heading in the same direction.
 
-### Live Demo - https://ride-sharing-platform-fljk.onrender.com
+## ✨ Key Features
 
-## Features
+- **Modern Dashboard**: Track your shared trips and savings in real-time.
+- **Dynamic Search**: Find rides by location, destination, and date.
+- **Instant Booking**: Secure your seat with a single click.
+- **Real-time Sync**: Live updates for available seats and ride counts.
+- **Smart Expiry**: Automated cleanup of past rides to keep listings fresh.
+- **Premium UI**: Responsive design with high-quality dual-tone iconography.
 
-- User authentication (signup/login)
-- Post and browse rides
-- Search rides by location and date
-- Book available rides
-- Manage your rides and bookings
-- User profile management
-- Contact form
+## 🛠️ Tech Stack
 
-## Tech Stack
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB with Mongoose
+- **Frontend**: EJS, Tailwind CSS, Iconify
+- **Authentication**: JWT & Cookie-based sessions
 
-- **Backend:** Node.js, Express.js
-- **Database:** MongoDB
-- **Frontend:** EJS, Tailwind CSS
-- **Authentication:** bcrypt, express-session
+## 🚀 Installation & Setup
 
-## Installation
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/sarthak-hase25/college-ride-share.git
+   cd college-ride-share
+   ```
 
-1. Clone the repository
-```bash
-git clone https://github.com/sarthak-hase25/college-ride-share.git
-cd college-ride-share
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Configure Environment Variables**:
+   Create a `.env` file in the root:
+   ```env
+   PORT=3000
+   MONGO_URI=your_mongodb_connection_string
+   JWT_SECRET=your_jwt_secret
+   ```
+
+4. **Start the application**:
+   ```bash
+   # For production
+   npm start
+
+   # For development (with hot reload)
+   npm run dev
+   ```
+
+5. **Access the platform**:
+   Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## 📁 Project Structure
+
+```
+├── controllers/    # Business logic & route handlers
+├── models/         # MongoDB/Mongoose schemas
+├── routes/         # Express router definitions
+├── views/          # EJS templates & partials
+├── middleware/     # Auth & validation middleware
+└── server.js       # Main entry point
 ```
 
-2. Install dependencies
-```bash
-npm install
-```
+## 📜 License
 
-3. Create `.env` file
-```env
-PORT=3000
-MONGO_URI=mongodb://localhost:27017/college-ride-share
-SESSION_SECRET=your_session_secret
-JWT_SECRET=your_jwt_secret
-```
-
-4. Start the application
-```bash
-npm run dev
-```
-
-5. Open http://localhost:3000
-
-## Project Structure
-```
-├── controllers/    # Business logic
-├── models/        # Database models
-├── routes/        # API routes
-├── views/         # EJS templates
-├── middleware/    # Auth middleware
-└── server.js      # Entry point
-```
-
-## Scripts
-
-- `npm start` - Production server
-- `npm run dev` - Development server with nodemon
-
+This project is open-source and available under the MIT License.

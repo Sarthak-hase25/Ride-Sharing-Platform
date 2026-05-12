@@ -41,8 +41,8 @@
             <div class="bg-white rounded-2xl shadow-2xl p-8">
                 <!-- Header -->
                 <div class="text-center mb-8">
-                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-secondary to-cyan-400 rounded-2xl mb-4">
-                        <span class="text-3xl">🚗</span>
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-secondary to-cyan-400 rounded-2xl mb-4 shadow-lg shadow-secondary/20">
+                        <iconify-icon icon="solar:login-bold-duotone" class="text-3xl text-white"></iconify-icon>
                     </div>
                     <h1 class="text-3xl font-bold text-primary mb-2">Welcome Back</h1>
                     <p class="text-gray-600">Login to continue your journey!</p>
@@ -50,8 +50,9 @@
 
                 <!-- Error Message -->
                 <% if (error) { %>
-                    <div class="mb-6 bg-red-50 border-l-4 border-red-500 p-4 rounded">
-                        <p class="text-red-700 text-sm"><%= error %></p>
+                    <div class="mb-8 bg-red-50 border border-red-100 p-4 rounded-2xl flex items-center gap-3 animate-in fade-in slide-in-from-top-4">
+                        <iconify-icon icon="solar:danger-bold-duotone" class="text-xl text-red-500"></iconify-icon>
+                        <p class="text-red-700 font-bold"><%= error %></p>
                     </div>
                 <% } %>
 
@@ -59,37 +60,40 @@
                 <form action="/login" method="POST">
                     <!-- Email -->
                     <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-semibold mb-2" for="email">
-                            Email Address
+                        <label class="block text-gray-500 text-[10px] font-black uppercase tracking-widest mb-2 flex items-center gap-2" for="email">
+                            <iconify-icon icon="solar:letter-bold-duotone" class="text-secondary"></iconify-icon> Email Address
                         </label>
                         <input 
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" 
+                            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white transition-all" 
                             id="email" 
                             name="email" 
                             type="email"
+                            placeholder="your@email.com"
                             required
                         >
                     </div>
 
                     <!-- Password -->
                     <div class="mb-6">
-                        <label class="block text-gray-700 text-sm font-semibold mb-2" for="password">
-                            Password
+                        <label class="block text-gray-500 text-[10px] font-black uppercase tracking-widest mb-2 flex items-center gap-2" for="password">
+                            <iconify-icon icon="solar:lock-password-bold-duotone" class="text-secondary"></iconify-icon> Password
                         </label>
                         <input 
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" 
+                            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white transition-all" 
                             id="password" 
                             name="password" 
                             type="password"
+                            placeholder="••••••••"
                             required
                         >
                     </div>
 
                     <!-- Submit Button -->
                     <button 
-                        class="w-full bg-secondary text-white font-semibold py-3 px-4 rounded-lg hover:bg-cyan-500 transition-all hover:scale-105 shadow-lg"
+                        class="w-full bg-secondary text-white font-bold py-4 px-6 rounded-xl hover:bg-cyan-500 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-secondary/25 flex items-center justify-center gap-2"
                         type="submit"
                     >
+                        <iconify-icon icon="solar:login-bold-duotone" class="text-xl"></iconify-icon>
                         Login
                     </button>
                 </form>

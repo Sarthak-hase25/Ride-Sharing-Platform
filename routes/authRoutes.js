@@ -21,16 +21,23 @@ router.get('/dashboard', isAuthenticated, async (req, res) => {
         const offeredRides = await Ride.countDocuments({ driver: req.session.userId });
         const bookedRides = await Ride.countDocuments({ passengers: req.session.userId });
         
+        // Calculate real savings
+        const bookings = await Ride.find({ passengers: req.session.userId });
+        let totalSaved = 0;
+        bookings.forEach(ride => totalSaved += ride.price);
+        
         res.render('pages/dashboard', { 
             title: 'Dashboard',
             offeredRides,
-            bookedRides
+            bookedRides,
+            totalSaved
         });
     } catch (error) {
         res.render('pages/dashboard', { 
             title: 'Dashboard',
             offeredRides: 0,
-            bookedRides: 0
+            bookedRides: 0,
+            totalSaved: 0
         });
     }
 });

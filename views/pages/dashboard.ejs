@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - College Ride Share</title>
+    <title>Dashboard - WayMate</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,26 +45,26 @@
 
             <!-- Quick Actions -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <a href="/rides/create" class="group bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all border-2 border-transparent hover:border-secondary">
-                    <div class="flex items-center gap-4">
-                        <div class="w-14 h-14 bg-gradient-to-br from-secondary to-cyan-400 rounded-xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-                            🚗
+                <a href="/rides/create" class="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all border-2 border-transparent hover:border-secondary">
+                    <div class="flex items-center gap-5">
+                        <div class="w-16 h-16 bg-gradient-to-br from-secondary to-cyan-400 rounded-2xl flex items-center justify-center text-3xl text-white group-hover:scale-110 group-hover:rotate-3 transition-all shadow-lg shadow-secondary/20">
+                            <iconify-icon icon="solar:steering-wheel-bold-duotone"></iconify-icon>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold text-primary">Offer a Ride</h3>
-                            <p class="text-gray-600">Share your journey with others</p>
+                            <h3 class="text-xl font-bold text-primary group-hover:text-secondary transition-colors">Offer a Ride</h3>
+                            <p class="text-gray-600">Share your journey and save fuel</p>
                         </div>
                     </div>
                 </a>
 
-                <a href="/rides" class="group bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all border-2 border-transparent hover:border-accent">
-                    <div class="flex items-center gap-4">
-                        <div class="w-14 h-14 bg-gradient-to-br from-accent to-orange-400 rounded-xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-                            🔍
+                <a href="/rides" class="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all border-2 border-transparent hover:border-accent">
+                    <div class="flex items-center gap-5">
+                        <div class="w-16 h-16 bg-gradient-to-br from-accent to-orange-400 rounded-2xl flex items-center justify-center text-3xl text-white group-hover:scale-110 group-hover:rotate-3 transition-all shadow-lg shadow-accent/20">
+                            <iconify-icon icon="solar:magnifer-bold-duotone"></iconify-icon>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold text-primary">Find a Ride</h3>
-                            <p class="text-gray-600">Browse available rides</p>
+                            <h3 class="text-xl font-bold text-primary group-hover:text-accent transition-colors">Find a Ride</h3>
+                            <p class="text-gray-600">Browse available travel partners</p>
                         </div>
                     </div>
                 </a>
@@ -72,22 +72,56 @@
 
             <!-- Stats -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <div class="text-secondary text-3xl font-bold mb-2"><%= offeredRides %></div>
-                        <p class="text-gray-600">Rides Offered</p>
+                <div class="bg-white p-8 rounded-2xl shadow-md text-center group hover:shadow-xl transition-all border border-gray-100">
+                    <div class="w-12 h-12 bg-cyan-50 text-secondary rounded-full flex items-center justify-center mx-auto mb-4 text-2xl group-hover:scale-110 transition-transform">
+                        <iconify-icon icon="solar:steering-wheel-bold-duotone"></iconify-icon>
                     </div>
-                <div class="bg-white p-6 rounded-xl shadow-md">
-            <div class="text-accent text-3xl font-bold mb-2"><%= bookedRides %></div>
-                <p class="text-gray-600">Rides Booked</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-md">
-                <div class="text-secondary text-3xl font-bold mb-2">₹<%= bookedRides * 50 %></div>
-                    <p class="text-gray-600">Approx. Saved</p>
+                    <div id="user-offered" class="text-secondary text-4xl font-extrabold mb-1"><%= offeredRides %></div>
+                    <p class="text-gray-500 font-medium">Rides Offered</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-md text-center group hover:shadow-xl transition-all border border-gray-100">
+                    <div class="w-12 h-12 bg-amber-50 text-accent rounded-full flex items-center justify-center mx-auto mb-4 text-2xl group-hover:scale-110 transition-transform">
+                        <iconify-icon icon="solar:calendar-date-bold-duotone"></iconify-icon>
+                    </div>
+                    <div id="user-booked" class="text-accent text-4xl font-extrabold mb-1"><%= bookedRides %></div>
+                    <p class="text-gray-500 font-medium">Rides Booked</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-md text-center group hover:shadow-xl transition-all border border-gray-100">
+                    <div class="w-12 h-12 bg-cyan-50 text-secondary rounded-full flex items-center justify-center mx-auto mb-4 text-2xl group-hover:scale-110 transition-transform">
+                        <iconify-icon icon="solar:wallet-money-bold-duotone"></iconify-icon>
+                    </div>
+                    <div id="user-saved" class="text-secondary text-4xl font-extrabold mb-1">₹<%= totalSaved %></div>
+                    <p class="text-gray-500 font-medium">Total Saved</p>
                 </div>
             </div>
         </div>
     </main>
     
     <%- include('../partials/footer') %>
+
+    <!-- Live Dashboard Stats Update Script -->
+    <script>
+        async function updateUserStats() {
+            try {
+                const response = await fetch('/api/user-stats');
+                const data = await response.json();
+                
+                if (data) {
+                    const offeredEl = document.getElementById('user-offered');
+                    const bookedEl = document.getElementById('user-booked');
+                    const savedEl = document.getElementById('user-saved');
+                    
+                    if (offeredEl) offeredEl.textContent = data.offeredRides;
+                    if (bookedEl) bookedEl.textContent = data.bookedRides;
+                    if (savedEl) savedEl.textContent = '₹' + data.totalSaved;
+                }
+            } catch (err) {
+                console.error('Failed to update dashboard stats:', err);
+            }
+        }
+
+        // Update every 5 seconds
+        setInterval(updateUserStats, 5000);
+    </script>
 </body>
 </html>

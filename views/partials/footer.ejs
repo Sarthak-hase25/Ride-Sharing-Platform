@@ -1,13 +1,39 @@
-<footer class="bg-primary text-white mt-auto border-t border-slate-800">
-    <div class="container mx-auto px-4 py-8">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="text-center md:text-left">
-                <p class="text-gray-400">&copy; 2026 College Ride Share. All rights reserved.</p>
+<footer class="bg-primary text-white mt-auto border-t border-slate-800 py-12">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+            <!-- Brand -->
+            <div class="flex flex-col items-center md:items-start gap-2">
+                <div class="flex items-center gap-2">
+                    <iconify-icon icon="solar:transmission-bold-duotone" class="text-3xl text-secondary"></iconify-icon>
+                    <span class="text-2xl font-black tracking-tighter uppercase">WayMate</span>
+                </div>
+                <p class="text-gray-500 text-sm font-medium">Connecting communities, one ride at a time.</p>
             </div>
-            <div class="flex gap-6">
-                <a href="#" class="text-gray-400 hover:text-secondary transition-colors">Privacy</a>
-                <a href="#" class="text-gray-400 hover:text-secondary transition-colors">Terms</a>
-                <a href="#" class="text-gray-400 hover:text-secondary transition-colors">Contact</a>
+
+            <!-- Links -->
+            <div class="flex flex-wrap justify-center gap-8 text-sm font-black uppercase tracking-widest">
+                <a href="/rides" class="text-gray-400 hover:text-secondary transition-all hover:translate-y-[-2px]">Browse Rides</a>
+                <a href="/profile" class="text-gray-400 hover:text-secondary transition-all hover:translate-y-[-2px]">Account</a>
+                <a href="#" class="text-gray-400 hover:text-secondary transition-all hover:translate-y-[-2px]">Support</a>
+            </div>
+
+            <!-- Socials -->
+            <div class="flex gap-4">
+                <a href="#" class="w-10 h-10 bg-slate-800 rounded-xl flex items-center justify-center text-gray-400 hover:bg-secondary hover:text-white transition-all hover:scale-110">
+                    <iconify-icon icon="solar:share-circle-bold-duotone" class="text-xl"></iconify-icon>
+                </a>
+                <a href="#" class="w-10 h-10 bg-slate-800 rounded-xl flex items-center justify-center text-gray-400 hover:bg-secondary hover:text-white transition-all hover:scale-110">
+                    <iconify-icon icon="solar:letter-bold-duotone" class="text-xl"></iconify-icon>
+                </a>
+            </div>
+        </div>
+        
+        <div class="mt-12 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-gray-600 text-xs font-bold uppercase tracking-widest">&copy; 2026 WayMate Community Network</p>
+            <div class="flex gap-4 text-[10px] text-gray-600 font-bold uppercase tracking-widest">
+                <a href="#" class="hover:text-gray-400 transition-colors">Privacy Policy</a>
+                <span>&bull;</span>
+                <a href="#" class="hover:text-gray-400 transition-colors">Terms of Service</a>
             </div>
         </div>
     </div>

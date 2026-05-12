@@ -39,86 +39,123 @@
         <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto">
                 <!-- Back Button -->
-                <a href="/rides" class="inline-flex items-center gap-2 text-secondary hover:text-cyan-500 mb-6 font-semibold">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                    </svg>
-                    Back to Rides
+                <!-- Back Button -->
+                <a href="/rides" class="inline-flex items-center gap-2 text-gray-500 hover:text-secondary mb-8 font-bold transition-colors group">
+                    <iconify-icon icon="solar:alt-arrow-left-bold-duotone" class="text-xl group-hover:-translate-x-1 transition-transform"></iconify-icon>
+                    Back to Available Rides
                 </a>
 
                 <!-- Main Card -->
-                <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
+                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
                     <!-- Header Section -->
-                    <div class="bg-gradient-to-r from-primary to-dark text-white p-8">
-                        <h1 class="text-3xl font-bold mb-4">Ride Details</h1>
-                        
-                        <!-- Route -->
-                        <div class="flex items-center gap-4">
-                            <div class="flex-1">
-                                <p class="text-blue-200 text-sm mb-1">From</p>
-                                <p class="text-2xl font-bold"><%= ride.from %></p>
-                            </div>
-                            <div class="text-3xl">→</div>
-                            <div class="flex-1">
-                                <p class="text-blue-200 text-sm mb-1">To</p>
-                                <p class="text-2xl font-bold"><%= ride.to %></p>
+                    <div class="bg-primary text-white p-10 relative overflow-hidden">
+                        <!-- Abstract Background Decoration -->
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+                        <div class="absolute bottom-0 left-0 w-48 h-48 bg-accent/10 rounded-full -ml-24 -mb-24 blur-2xl"></div>
+
+                        <div class="relative z-10">
+                            <h1 class="text-xs uppercase tracking-[0.3em] font-black text-secondary mb-6">Journey Details</h1>
+                            
+                            <!-- Route -->
+                            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                                <div class="flex-1 text-center md:text-left">
+                                    <p class="text-gray-400 text-xs font-bold uppercase mb-2">Starting From</p>
+                                    <p class="text-3xl md:text-4xl font-black"><%= ride.from %></p>
+                                </div>
+                                <div class="flex flex-col items-center gap-2">
+                                    <iconify-icon icon="solar:double-alt-arrow-right-bold-duotone" class="text-4xl text-accent animate-pulse"></iconify-icon>
+                                </div>
+                                <div class="flex-1 text-center md:text-right">
+                                    <p class="text-gray-400 text-xs font-bold uppercase mb-2">Destination</p>
+                                    <p class="text-3xl md:text-4xl font-black"><%= ride.to %></p>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Details Section -->
-                    <div class="p-8">
-                        <!-- Date & Time -->
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                            <div class="bg-light p-4 rounded-xl">
-                                <p class="text-gray-500 text-sm mb-1">📅 Date</p>
-                                <p class="font-bold text-lg">
-                                    <%= new Date(ride.date).toLocaleDateString('en-IN', { 
-                                        weekday: 'long', 
-                                        year: 'numeric', 
-                                        month: 'long', 
-                                        day: 'numeric' 
-                                    }) %>
-                                </p>
-                            </div>
-                            <div class="bg-light p-4 rounded-xl">
-                                <p class="text-gray-500 text-sm mb-1">🕐 Time</p>
-                                <p class="font-bold text-lg"><%= ride.time %></p>
-                            </div>
-                            <div class="bg-light p-4 rounded-xl">
-                                <p class="text-gray-500 text-sm mb-1">💺 Seats Available</p>
-                                <p class="font-bold text-lg"><%= ride.seats - ride.passengers.length %> / <%= ride.seats %></p>
-                            </div>
-                        </div>
-
-                        <!-- Vehicle Details -->
-                        <div class="mb-8">
-                            <h2 class="text-xl font-bold text-primary mb-4">🚗 Vehicle Information</h2>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div class="border-l-4 border-secondary pl-4">
-                                    <p class="text-gray-500 text-sm">Vehicle Type</p>
-                                    <p class="font-semibold text-lg"><%= ride.vehicleType %></p>
+                    <div class="p-10">
+                        <!-- Date & Time & Seats -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                            <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100 flex items-center gap-4 group hover:bg-white hover:shadow-xl transition-all">
+                                <div class="w-12 h-12 bg-white text-secondary rounded-xl flex items-center justify-center text-2xl shadow-sm">
+                                    <iconify-icon icon="solar:calendar-date-bold-duotone"></iconify-icon>
                                 </div>
-                                <div class="border-l-4 border-secondary pl-4">
-                                    <p class="text-gray-500 text-sm">Vehicle Number</p>
-                                    <p class="font-semibold text-lg"><%= ride.vehicleNumber %></p>
+                                <div>
+                                    <p class="text-gray-400 text-[10px] font-bold uppercase tracking-widest mb-1">Date</p>
+                                    <p class="font-black text-primary">
+                                        <%= new Date(ride.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100 flex items-center gap-4 group hover:bg-white hover:shadow-xl transition-all">
+                                <div class="w-12 h-12 bg-white text-accent rounded-xl flex items-center justify-center text-2xl shadow-sm">
+                                    <iconify-icon icon="solar:clock-circle-bold-duotone"></iconify-icon>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400 text-[10px] font-bold uppercase tracking-widest mb-1">Time</p>
+                                    <p class="font-black text-primary"><%= ride.time %></p>
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100 flex items-center gap-4 group hover:bg-white hover:shadow-xl transition-all">
+                                <div class="w-12 h-12 bg-white text-secondary rounded-xl flex items-center justify-center text-2xl shadow-sm">
+                                    <iconify-icon icon="solar:users-group-rounded-bold-duotone"></iconify-icon>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400 text-[10px] font-bold uppercase tracking-widest mb-1">Availability</p>
+                                    <p class="font-black text-primary"><%= ride.seats - ride.passengers.length %> / <%= ride.seats %> Seats Left</p>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Driver Details -->
-                        <div class="mb-8">
-                            <h2 class="text-xl font-bold text-primary mb-4">👤 Driver Information</h2>
-                            <div class="bg-light p-6 rounded-xl">
-                                <div class="flex items-start gap-4">
-                                    <div class="w-16 h-16 bg-gradient-to-br from-secondary to-cyan-400 rounded-full flex items-center justify-center text-2xl text-white font-bold">
+                        <!-- Vehicle & Driver Grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                            <!-- Vehicle Information -->
+                            <div class="bg-white rounded-2xl border border-gray-100 p-8">
+                                <h2 class="text-lg font-black text-primary mb-6 flex items-center gap-2 uppercase tracking-tighter">
+                                    <iconify-icon icon="solar:car-bold-duotone" class="text-secondary"></iconify-icon> Vehicle Details
+                                </h2>
+                                <div class="space-y-4">
+                                    <div class="flex justify-between items-center py-3 border-b border-gray-50">
+                                        <span class="text-gray-400 font-bold text-sm">Vehicle Type</span>
+                                        <span class="font-black text-primary"><%= ride.vehicleType %></span>
+                                    </div>
+                                    <div class="flex justify-between items-center py-3">
+                                        <span class="text-gray-400 font-bold text-sm">License Plate</span>
+                                        <span class="font-black text-primary uppercase"><%= ride.vehicleNumber %></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Driver Details -->
+                            <div class="bg-white rounded-2xl border border-gray-100 p-8">
+                                <h2 class="text-lg font-black text-primary mb-6 flex items-center gap-2 uppercase tracking-tighter">
+                                    <iconify-icon icon="solar:user-id-bold-duotone" class="text-secondary"></iconify-icon> Driver Information
+                                </h2>
+                                <div class="flex items-center gap-4 mb-6">
+                                    <div class="w-14 h-14 bg-gradient-to-br from-secondary to-cyan-500 rounded-2xl flex items-center justify-center text-xl text-white font-black shadow-lg shadow-secondary/20">
                                         <%= ride.driver.name.charAt(0).toUpperCase() %>
                                     </div>
-                                    <div class="flex-1">
-                                        <p class="font-bold text-lg text-gray-800"><%= ride.driver.name %></p>
-                                        <p class="text-gray-600"><%= ride.driver.college %></p>
-                                        <p class="text-gray-600">📧 <%= ride.driver.email %></p>
-                                        <p class="text-gray-600">📱 <%= ride.driver.phone %></p>
+                                    <div>
+                                        <p class="font-black text-primary text-lg"><%= ride.driver.name %></p>
+                                        <div class="flex items-center gap-1 text-accent">
+                                            <iconify-icon icon="solar:star-bold"></iconify-icon>
+                                            <iconify-icon icon="solar:star-bold"></iconify-icon>
+                                            <iconify-icon icon="solar:star-bold"></iconify-icon>
+                                            <iconify-icon icon="solar:star-bold"></iconify-icon>
+                                            <iconify-icon icon="solar:star-bold"></iconify-icon>
+                                            <span class="text-gray-400 text-xs font-bold ml-1">(4.9/5)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="flex items-center gap-2 text-gray-600 text-sm">
+                                        <iconify-icon icon="solar:map-point-bold-duotone" class="text-secondary"></iconify-icon>
+                                        <span class="font-bold"><%= ride.driver.college %></span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-gray-600 text-sm">
+                                        <iconify-icon icon="solar:letter-bold-duotone" class="text-secondary"></iconify-icon>
+                                        <span class="font-bold"><%= ride.driver.email %></span>
                                     </div>
                                 </div>
                             </div>
@@ -126,22 +163,27 @@
 
                         <!-- Additional Notes -->
                         <% if (ride.notes) { %>
-                            <div class="mb-8">
-                                <h2 class="text-xl font-bold text-primary mb-4">📝 Additional Notes</h2>
-                                <div class="bg-amber-50 border-l-4 border-accent p-4 rounded">
-                                    <p class="text-gray-700"><%= ride.notes %></p>
+                            <div class="mb-12">
+                                <h2 class="text-lg font-black text-primary mb-4 uppercase tracking-tighter flex items-center gap-2">
+                                    <iconify-icon icon="solar:notes-bold-duotone" class="text-accent"></iconify-icon> Driver's Notes
+                                </h2>
+                                <div class="bg-amber-50/50 border border-amber-100 p-6 rounded-2xl">
+                                    <p class="text-gray-700 leading-relaxed italic">"<%= ride.notes %>"</p>
                                 </div>
                             </div>
                         <% } %>
 
                         <!-- Passengers -->
                         <% if (ride.passengers.length > 0) { %>
-                            <div class="mb-8">
-                                <h2 class="text-xl font-bold text-primary mb-4">👥 Passengers (<%= ride.passengers.length %>)</h2>
+                            <div class="mb-12">
+                                <h2 class="text-lg font-black text-primary mb-6 uppercase tracking-tighter flex items-center gap-2">
+                                    <iconify-icon icon="solar:users-group-two-rounded-bold-duotone" class="text-secondary"></iconify-icon> Co-Travelers (<%= ride.passengers.length %>)
+                                </h2>
                                 <div class="flex flex-wrap gap-3">
                                     <% ride.passengers.forEach(passenger => { %>
-                                        <div class="bg-light px-4 py-2 rounded-full">
-                                            <span class="font-semibold"><%= passenger.name %></span>
+                                        <div class="bg-white border border-gray-100 px-5 py-2.5 rounded-xl flex items-center gap-2 shadow-sm">
+                                            <div class="w-2 h-2 bg-secondary rounded-full"></div>
+                                            <span class="font-bold text-gray-700 text-sm"><%= passenger.name %></span>
                                         </div>
                                     <% }) %>
                                 </div>
@@ -149,38 +191,41 @@
                         <% } %>
 
                         <!-- Price & Booking -->
-                        <div class="border-t-2 border-gray-200 pt-6">
-                            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-                                <div>
-                                    <p class="text-gray-500 text-sm">Total Price</p>
-                                    <p class="text-4xl font-bold text-secondary">₹<%= ride.price %></p>
-                                    <p class="text-sm text-gray-500">per seat</p>
+                        <div class="border-t border-gray-100 pt-10">
+                            <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                                <div class="text-center md:text-left">
+                                    <p class="text-gray-400 text-xs font-bold uppercase tracking-widest mb-1">Total Cost / Seat</p>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-5xl font-black text-secondary">₹<%= ride.price %></span>
+                                        <span class="text-gray-400 font-bold">INR</span>
+                                    </div>
                                 </div>
                                 
-                                <% if (user && ride.driver._id.toString() === user.id) { %>
-                                    <!-- Driver's own ride -->
-                                    <div class="bg-green-50 border border-green-200 text-green-700 px-6 py-3 rounded-lg">
-                                        <p class="font-semibold">✅ This is your ride</p>
+                                <% if (isExpired) { %>
+                                    <div class="bg-gray-100 text-gray-500 px-10 py-5 rounded-2xl font-black flex items-center gap-3">
+                                        <iconify-icon icon="solar:calendar-block-bold-duotone" class="text-2xl"></iconify-icon> RIDE EXPIRED
+                                    </div>
+                                <% } else if (user && ride.driver._id.toString() === user.id) { %>
+                                    <div class="bg-green-50 text-green-600 border border-green-100 px-10 py-5 rounded-2xl font-black flex items-center gap-3">
+                                        <iconify-icon icon="solar:check-circle-bold-duotone" class="text-2xl"></iconify-icon> THIS IS YOUR RIDE
                                     </div>
                                 <% } else if (user && ride.passengers.some(p => p._id.toString() === user.id)) { %>
-                                    <!-- Already booked -->
-                                    <div class="bg-blue-50 border border-blue-200 text-blue-700 px-6 py-3 rounded-lg">
-                                        <p class="font-semibold">✅ You've booked this ride</p>
+                                    <div class="bg-blue-50 text-blue-600 border border-blue-100 px-10 py-5 rounded-2xl font-black flex items-center gap-3">
+                                        <iconify-icon icon="solar:ticket-bold-duotone" class="text-2xl"></iconify-icon> ALREADY BOOKED
                                     </div>
                                 <% } else if (ride.seats - ride.passengers.length > 0) { %>
-                                    <!-- Available to book -->
-                                    <form action="/rides/<%= ride._id %>/book" method="POST">
+                                    <form action="/rides/<%= ride._id %>/book" method="POST" class="w-full md:w-auto">
                                         <button 
                                             type="submit"
-                                            class="bg-secondary text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-cyan-500 transition-all hover:scale-105 shadow-lg"
+                                            class="w-full md:w-auto bg-primary text-white px-12 py-5 rounded-2xl font-black text-xl hover:bg-secondary transition-all hover:scale-[1.05] active:scale-95 shadow-2xl shadow-primary/20 flex items-center justify-center gap-3"
                                         >
-                                            Book This Ride
+                                            <iconify-icon icon="solar:ticket-bold-duotone"></iconify-icon>
+                                            BOOK NOW
                                         </button>
                                     </form>
                                 <% } else { %>
-                                    <!-- Fully booked -->
-                                    <div class="bg-red-50 border border-red-200 text-red-700 px-6 py-3 rounded-lg">
-                                        <p class="font-semibold">❌ Fully Booked</p>
+                                    <div class="bg-red-50 text-red-600 border border-red-100 px-10 py-5 rounded-2xl font-black flex items-center gap-3">
+                                        <iconify-icon icon="solar:close-circle-bold-duotone" class="text-2xl"></iconify-icon> FULLY BOOKED
                                     </div>
                                 <% } %>
                             </div>

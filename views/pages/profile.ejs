@@ -39,42 +39,49 @@
         <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto">
                 <!-- Header -->
-                <div class="text-center mb-8">
-                    <div class="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-secondary to-cyan-400 rounded-full mb-4">
-                        <span class="text-5xl text-white font-bold"><%= user.name.charAt(0).toUpperCase() %></span>
+                <div class="text-center mb-10">
+                    <div class="relative inline-block">
+                        <div class="inline-flex items-center justify-center w-28 h-28 bg-gradient-to-br from-secondary to-cyan-400 rounded-3xl mb-4 shadow-xl shadow-secondary/20 rotate-3 group-hover:rotate-0 transition-transform">
+                            <span class="text-5xl text-white font-black"><%= user.name.charAt(0).toUpperCase() %></span>
+                        </div>
+                        <div class="absolute -bottom-1 -right-1 w-10 h-10 bg-white rounded-xl shadow-lg flex items-center justify-center text-secondary">
+                            <iconify-icon icon="solar:camera-bold-duotone" class="text-2xl"></iconify-icon>
+                        </div>
                     </div>
-                    <h1 class="text-4xl font-bold text-primary mb-2">My Profile</h1>
-                    <p class="text-gray-600">Manage your account information</p>
+                    <h1 class="text-4xl font-black text-primary mb-2">My Profile</h1>
+                    <p class="text-gray-500 font-medium">Manage your WayMate account and preferences</p>
                 </div>
 
                 <!-- Success/Error Messages -->
                 <% if (success) { %>
-                    <div class="mb-6 bg-green-50 border-l-4 border-green-500 p-4 rounded">
-                        <p class="text-green-700 font-semibold">✅ <%= success %></p>
+                    <div class="mb-8 bg-green-50 border border-green-100 p-5 rounded-2xl flex items-center gap-3 animate-in fade-in slide-in-from-top-4">
+                        <iconify-icon icon="solar:check-circle-bold-duotone" class="text-2xl text-green-500"></iconify-icon>
+                        <p class="text-green-700 font-bold"><%= success %></p>
                     </div>
                 <% } %>
                 
                 <% if (error) { %>
-                    <div class="mb-6 bg-red-50 border-l-4 border-red-500 p-4 rounded">
-                        <p class="text-red-700 font-semibold">❌ <%= error %></p>
+                    <div class="mb-8 bg-red-50 border border-red-100 p-5 rounded-2xl flex items-center gap-3 animate-in fade-in slide-in-from-top-4">
+                        <iconify-icon icon="solar:danger-bold-duotone" class="text-2xl text-red-500"></iconify-icon>
+                        <p class="text-red-700 font-bold"><%= error %></p>
                     </div>
                 <% } %>
 
                 <!-- Profile Information -->
-                <div class="bg-white rounded-2xl shadow-2xl p-8 mb-6">
-                    <h2 class="text-2xl font-bold text-primary mb-6 flex items-center gap-2">
-                        <span>👤</span> Personal Information
+                <div class="bg-white rounded-3xl shadow-xl p-10 mb-8 border border-gray-100">
+                    <h2 class="text-2xl font-black text-primary mb-8 flex items-center gap-3 uppercase tracking-tighter">
+                        <iconify-icon icon="solar:user-bold-duotone" class="text-secondary text-3xl"></iconify-icon> Personal Information
                     </h2>
                     
                     <form action="/profile/update" method="POST">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <!-- Name -->
                             <div>
-                                <label class="block text-gray-700 text-sm font-semibold mb-2" for="name">
+                                <label class="block text-gray-500 text-xs font-black uppercase tracking-widest mb-3" for="name">
                                     Full Name
                                 </label>
                                 <input 
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent" 
+                                    class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white transition-all font-bold text-primary" 
                                     id="name" 
                                     name="name" 
                                     type="text"
@@ -85,11 +92,11 @@
 
                             <!-- Email -->
                             <div>
-                                <label class="block text-gray-700 text-sm font-semibold mb-2" for="email">
+                                <label class="block text-gray-500 text-xs font-black uppercase tracking-widest mb-3" for="email">
                                     Email Address
                                 </label>
                                 <input 
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent" 
+                                    class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white transition-all font-bold text-primary" 
                                     id="email" 
                                     name="email" 
                                     type="email"
@@ -100,11 +107,11 @@
 
                             <!-- Phone -->
                             <div>
-                                <label class="block text-gray-700 text-sm font-semibold mb-2" for="phone">
+                                <label class="block text-gray-500 text-xs font-black uppercase tracking-widest mb-3" for="phone">
                                     Phone Number
                                 </label>
                                 <input 
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent" 
+                                    class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white transition-all font-bold text-primary" 
                                     id="phone" 
                                     name="phone" 
                                     type="tel"
@@ -114,13 +121,13 @@
                                 >
                             </div>
 
-                            <!-- College -->
+                            <!-- Location/Organization -->
                             <div>
-                                <label class="block text-gray-700 text-sm font-semibold mb-2" for="college">
-                                    College Name
+                                <label class="block text-gray-500 text-[10px] font-black uppercase tracking-widest mb-3 flex items-center gap-2" for="college">
+                                    <iconify-icon icon="solar:city-bold-duotone" class="text-secondary text-lg"></iconify-icon> Location / Organization
                                 </label>
                                 <input 
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent" 
+                                    class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white transition-all font-bold text-primary" 
                                     id="college" 
                                     name="college" 
                                     type="text"
@@ -130,101 +137,129 @@
                             </div>
                         </div>
 
-                        <div class="mt-6">
+                        <div class="mt-10">
                             <button 
                                 type="submit"
-                                class="bg-secondary text-white font-semibold py-3 px-8 rounded-lg hover:bg-cyan-500 transition-all hover:scale-105 shadow-lg"
+                                class="bg-secondary text-white font-black py-4 px-10 rounded-2xl hover:bg-cyan-500 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-secondary/25 flex items-center justify-center gap-2"
                             >
+                                <iconify-icon icon="solar:diskette-bold-duotone" class="text-xl"></iconify-icon>
                                 Update Profile
                             </button>
                         </div>
                     </form>
                 </div>
 
-                <!-- Change Password -->
-                <div class="bg-white rounded-2xl shadow-2xl p-8">
-                    <h2 class="text-2xl font-bold text-primary mb-6 flex items-center gap-2">
-                        <span>🔒</span> Change Password
-                    </h2>
-                    
-                    <form action="/profile/change-password" method="POST">
-                        <div class="space-y-4">
-                            <!-- Current Password -->
-                            <div>
-                                <label class="block text-gray-700 text-sm font-semibold mb-2" for="currentPassword">
-                                    Current Password
-                                </label>
-                                <input 
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent" 
-                                    id="currentPassword" 
-                                    name="currentPassword" 
-                                    type="password"
-                                    required
-                                >
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Change Password -->
+                    <div class="bg-white rounded-3xl shadow-xl p-10 border border-gray-100">
+                        <h2 class="text-2xl font-black text-primary mb-8 flex items-center gap-3 uppercase tracking-tighter">
+                            <iconify-icon icon="solar:lock-password-bold-duotone" class="text-accent text-3xl"></iconify-icon> Password
+                        </h2>
+                        
+                        <form action="/profile/change-password" method="POST">
+                            <div class="space-y-6">
+                                <!-- Current Password -->
+                                <div>
+                                    <label class="block text-gray-500 text-xs font-black uppercase tracking-widest mb-3" for="currentPassword">
+                                        Current Password
+                                    </label>
+                                    <input 
+                                        class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white transition-all font-bold" 
+                                        id="currentPassword" 
+                                        name="currentPassword" 
+                                        type="password"
+                                        placeholder="••••••••"
+                                        required
+                                    >
+                                </div>
+
+                                <!-- New Password -->
+                                <div>
+                                    <label class="block text-gray-500 text-xs font-black uppercase tracking-widest mb-3" for="newPassword">
+                                        New Password
+                                    </label>
+                                    <input 
+                                        class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white transition-all font-bold" 
+                                        id="newPassword" 
+                                        name="newPassword" 
+                                        type="password"
+                                        minlength="6"
+                                        placeholder="••••••••"
+                                        required
+                                    >
+                                </div>
+
+                                <!-- Confirm New Password -->
+                                <div>
+                                    <label class="block text-gray-500 text-xs font-black uppercase tracking-widest mb-3" for="confirmPassword">
+                                        Confirm New
+                                    </label>
+                                    <input 
+                                        class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white transition-all font-bold" 
+                                        id="confirmPassword" 
+                                        name="confirmPassword" 
+                                        type="password"
+                                        minlength="6"
+                                        placeholder="••••••••"
+                                        required
+                                    >
+                                </div>
                             </div>
 
-                            <!-- New Password -->
-                            <div>
-                                <label class="block text-gray-700 text-sm font-semibold mb-2" for="newPassword">
-                                    New Password
-                                </label>
-                                <input 
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent" 
-                                    id="newPassword" 
-                                    name="newPassword" 
-                                    type="password"
-                                    minlength="6"
-                                    required
+                            <div class="mt-8">
+                                <button 
+                                    type="submit"
+                                    class="w-full bg-primary text-white font-black py-4 px-8 rounded-2xl hover:bg-dark transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg flex items-center justify-center gap-2"
                                 >
+                                    <iconify-icon icon="solar:key-bold-duotone" class="text-xl"></iconify-icon>
+                                    Change Password
+                                </button>
                             </div>
+                        </form>
+                    </div>
 
-                            <!-- Confirm New Password -->
-                            <div>
-                                <label class="block text-gray-700 text-sm font-semibold mb-2" for="confirmPassword">
-                                    Confirm New Password
-                                </label>
-                                <input 
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent" 
-                                    id="confirmPassword" 
-                                    name="confirmPassword" 
-                                    type="password"
-                                    minlength="6"
-                                    required
-                                >
+                    <!-- Account Info & Support -->
+                    <div class="space-y-8">
+                        <div class="bg-white rounded-3xl shadow-xl p-10 border border-gray-100 h-full">
+                            <h2 class="text-2xl font-black text-primary mb-8 flex items-center gap-3 uppercase tracking-tighter">
+                                <iconify-icon icon="solar:info-circle-bold-duotone" class="text-secondary text-3xl"></iconify-icon> Account Info
+                            </h2>
+                            
+                            <div class="space-y-6">
+                                <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100 flex items-center gap-4">
+                                    <div class="w-12 h-12 bg-white text-secondary rounded-xl flex items-center justify-center text-2xl shadow-sm">
+                                        <iconify-icon icon="solar:calendar-add-bold-duotone"></iconify-icon>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-400 text-[10px] font-bold uppercase tracking-widest mb-1">Member Since</p>
+                                        <p class="font-black text-primary">
+                                            <%= new Date(user.createdAt).toLocaleDateString('en-IN', { 
+                                                day: 'numeric', 
+                                                month: 'long', 
+                                                year: 'numeric' 
+                                            }) %>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100 flex items-center gap-4">
+                                    <div class="w-12 h-12 bg-white text-accent rounded-xl flex items-center justify-center text-2xl shadow-sm">
+                                        <iconify-icon icon="solar:verified-check-bold-duotone"></iconify-icon>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-400 text-[10px] font-bold uppercase tracking-widest mb-1">Account ID</p>
+                                        <p class="font-mono text-xs text-gray-500 font-bold truncate max-w-[150px]"><%= user._id %></p>
+                                    </div>
+                                </div>
+
+                                <div class="pt-6 border-t border-gray-100">
+                                    <p class="text-gray-400 text-xs font-bold mb-4">Need help with your account?</p>
+                                    <a href="mailto:support@waymate.com" class="flex items-center gap-2 text-secondary font-black hover:underline">
+                                        <iconify-icon icon="solar:chat-round-dots-bold-duotone" class="text-xl"></iconify-icon>
+                                        Contact Support
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="mt-6">
-                            <button 
-                                type="submit"
-                                class="bg-accent text-white font-semibold py-3 px-8 rounded-lg hover:bg-orange-500 transition-all hover:scale-105 shadow-lg"
-                            >
-                                Change Password
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Account Stats -->
-                <div class="bg-white rounded-2xl shadow-2xl p-8 mt-6">
-                    <h2 class="text-2xl font-bold text-primary mb-6 flex items-center gap-2">
-                        <span>📊</span> Account Information
-                    </h2>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="border-l-4 border-secondary pl-4">
-                            <p class="text-gray-500 text-sm">Member Since</p>
-                            <p class="font-semibold text-lg">
-                                <%= new Date(user.createdAt).toLocaleDateString('en-IN', { 
-                                    day: 'numeric', 
-                                    month: 'long', 
-                                    year: 'numeric' 
-                                }) %>
-                            </p>
-                        </div>
-                        <div class="border-l-4 border-accent pl-4">
-                            <p class="text-gray-500 text-sm">User ID</p>
-                            <p class="font-semibold text-sm text-gray-600"><%= user._id %></p>
                         </div>
                     </div>
                 </div>

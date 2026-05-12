@@ -35,25 +35,7 @@ exports.createRide = async (req, res) => {
     }
 };
 
-// List all active rides
-exports.listRides = async (req, res) => {
-    try {
-        const rides = await Ride.find({ status: 'active' })
-            .populate('driver', 'name college phone')
-            .sort({ date: 1, time: 1 });
 
-        res.render('pages/rides', {
-            title: 'Find Rides',
-            rides
-        });
-    } catch (error) {
-        res.render('pages/rides', {
-            title: 'Find Rides',
-            rides: [],
-            error: error.message
-        });
-    }
-};
 
 // Show ride details
 exports.showRideDetails = async (req, res) => {
@@ -66,9 +48,19 @@ exports.showRideDetails = async (req, res) => {
             return res.redirect('/rides');
         }
 
+        // Check if expired
+        const now = new Date();
+        const rideDate = new Date(ride.date);
+        const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        const rideDateOnly = new Date(rideDate.getFullYear(), rideDate.getMonth(), rideDate.getDate());
+        const currentTime = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+        
+        const isExpired = rideDateOnly < today || (rideDateOnly.getTime() === today.getTime() && ride.time < currentTime);
+
         res.render('pages/ride-details', {
             title: 'Ride Details',
-            ride
+            ride,
+            isExpired
         });
     } catch (error) {
         res.redirect('/rides');
@@ -81,6 +73,17 @@ exports.bookRide = async (req, res) => {
         const ride = await Ride.findById(req.params.id);
 
         if (!ride) {
+            return res.redirect('/rides');
+        }
+
+        // Check if ride has expired
+        const now = new Date();
+        const rideDate = new Date(ride.date);
+        const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        const rideDateOnly = new Date(rideDate.getFullYear(), rideDate.getMonth(), rideDate.getDate());
+        const currentTime = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+
+        if (rideDateOnly < today || (rideDateOnly.getTime() === today.getTime() && ride.time < currentTime)) {
             return res.redirect('/rides');
         }
 
@@ -201,8 +204,18 @@ exports.listRides = async (req, res) => {
     try {
         const { from, to, date } = req.query;
         
+        const now = new Date();
+        const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        const currentTime = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+
         // Build query
-        let query = { status: 'active' };
+        let query = { 
+            status: 'active',
+            $or: [
+                { date: { $gt: today } },
+                { date: today, time: { $gte: currentTime } }
+            ]
+        };
         
         if (from) {
             query.from = { $regex: from, $options: 'i' }; // Case-insensitive search
@@ -214,13 +227,16 @@ exports.listRides = async (req, res) => {
         
         if (date) {
             const searchDate = new Date(date);
-            const nextDay = new Date(searchDate);
-            nextDay.setDate(nextDay.getDate() + 1);
+            const searchDateOnly = new Date(searchDate.getFullYear(), searchDate.getMonth(), searchDate.getDate());
             
-            query.date = {
-                $gte: searchDate,
-                $lt: nextDay
-            };
+            // Remove the default $or and apply specific date filter
+            delete query.$or;
+            query.date = searchDateOnly;
+
+            // If searching for today, also filter by time
+            if (searchDateOnly.getTime() === today.getTime()) {
+                query.time = { $gte: currentTime };
+            }
         }
         
         const rides = await Ride.find(query)

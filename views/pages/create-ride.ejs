@@ -54,36 +54,38 @@
 
                 <form action="/rides/create" method="POST">
                     <!-- Route Section -->
-                    <div class="mb-6">
-                        <h2 class="text-xl font-bold text-primary mb-4 flex items-center gap-2">
-                            <span>📍</span> Route Details
+                    <div class="mb-8">
+                        <h2 class="text-xs font-black text-secondary mb-6 flex items-center gap-2 uppercase tracking-[0.3em]">
+                            <iconify-icon icon="solar:map-point-wave-bold-duotone" class="text-xl"></iconify-icon> Route Details
                         </h2>
                         
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <!-- From -->
                             <div>
-                                <label class="block text-gray-700 text-sm font-semibold mb-2" for="from">
-                                    From (Pickup Location)
+                                <label class="block text-gray-500 text-[10px] font-black uppercase tracking-widest mb-2 flex items-center gap-2" for="from">
+                                    <iconify-icon icon="solar:map-point-bold-duotone" class="text-secondary"></iconify-icon> Pickup Location
                                 </label>
                                 <input 
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" 
+                                    class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white transition-all" 
                                     id="from" 
                                     name="from" 
                                     type="text"
+                                    placeholder="Enter pickup point"
                                     required
                                 >
                             </div>
 
                             <!-- To -->
                             <div>
-                                <label class="block text-gray-700 text-sm font-semibold mb-2" for="to">
-                                    To (Destination)
+                                <label class="block text-gray-500 text-[10px] font-black uppercase tracking-widest mb-2 flex items-center gap-2" for="to">
+                                    <iconify-icon icon="solar:flag-bold-duotone" class="text-accent"></iconify-icon> Destination
                                 </label>
                                 <input 
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" 
+                                    class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white transition-all" 
                                     id="to" 
                                     name="to" 
                                     type="text"
+                                    placeholder="Enter destination"
                                     required
                                 >
                             </div>
@@ -91,19 +93,19 @@
                     </div>
 
                     <!-- Date & Time Section -->
-                    <div class="mb-6">
-                        <h2 class="text-xl font-bold text-primary mb-4 flex items-center gap-2">
-                            <span>🕐</span> When?
+                    <div class="mb-8">
+                        <h2 class="text-xs font-black text-secondary mb-6 flex items-center gap-2 uppercase tracking-[0.3em]">
+                            <iconify-icon icon="solar:calendar-date-bold-duotone" class="text-xl"></iconify-icon> Schedule
                         </h2>
                         
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <!-- Date -->
                             <div>
-                                <label class="block text-gray-700 text-sm font-semibold mb-2" for="date">
-                                    Date
+                                <label class="block text-gray-500 text-[10px] font-black uppercase tracking-widest mb-2 flex items-center gap-2" for="date">
+                                    <iconify-icon icon="solar:calendar-minimalistic-bold-duotone" class="text-secondary"></iconify-icon> Date
                                 </label>
                                 <input 
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" 
+                                    class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white transition-all" 
                                     id="date" 
                                     name="date" 
                                     type="date"
@@ -113,11 +115,11 @@
 
                             <!-- Time -->
                             <div>
-                                <label class="block text-gray-700 text-sm font-semibold mb-2" for="time">
-                                    Time
+                                <label class="block text-gray-500 text-[10px] font-black uppercase tracking-widest mb-2 flex items-center gap-2" for="time">
+                                    <iconify-icon icon="solar:clock-circle-bold-duotone" class="text-secondary"></iconify-icon> Time
                                 </label>
                                 <input 
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" 
+                                    class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white transition-all" 
                                     id="time" 
                                     name="time" 
                                     type="time"
@@ -128,24 +130,24 @@
                     </div>
 
                     <!-- Vehicle & Pricing Section -->
-                    <div class="mb-6">
-                        <h2 class="text-xl font-bold text-primary mb-4 flex items-center gap-2">
-                            <span>🚗</span> Vehicle & Pricing
+                    <div class="mb-8">
+                        <h2 class="text-xs font-black text-secondary mb-6 flex items-center gap-2 uppercase tracking-[0.3em]">
+                            <iconify-icon icon="solar:bus-bold-duotone" class="text-xl"></iconify-icon> Vehicle & Pricing
                         </h2>
                         
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                             <!-- Vehicle Type -->
                             <div>
-                                <label class="block text-gray-700 text-sm font-semibold mb-2" for="vehicleType">
-                                    Vehicle Type
+                                <label class="block text-gray-500 text-[10px] font-black uppercase tracking-widest mb-2 flex items-center gap-2" for="vehicleType">
+                                    <iconify-icon icon="solar:car-bold-duotone" class="text-secondary"></iconify-icon> Vehicle Type
                                 </label>
                                 <select 
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" 
+                                    class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white transition-all appearance-none" 
                                     id="vehicleType" 
                                     name="vehicleType"
                                     required
                                 >
-                                    <option value="">Select vehicle type</option>
+                                    <option value="">Select type</option>
                                     <option value="Car">Car</option>
                                     <option value="Bike">Bike</option>
                                     <option value="Auto">Auto</option>
@@ -155,27 +157,28 @@
 
                             <!-- Vehicle Number -->
                             <div>
-                                <label class="block text-gray-700 text-sm font-semibold mb-2" for="vehicleNumber">
-                                    Vehicle Number
+                                <label class="block text-gray-500 text-[10px] font-black uppercase tracking-widest mb-2 flex items-center gap-2" for="vehicleNumber">
+                                    <iconify-icon icon="solar:bill-list-bold-duotone" class="text-secondary"></iconify-icon> License Plate
                                 </label>
                                 <input 
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all uppercase" 
+                                    class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white transition-all uppercase" 
                                     id="vehicleNumber" 
                                     name="vehicleNumber" 
                                     type="text"
+                                    placeholder="e.g. MH 12 AB 1234"
                                     required
                                 >
                             </div>
                         </div>
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <!-- Seats -->
                             <div>
-                                <label class="block text-gray-700 text-sm font-semibold mb-2" for="seats">
-                                    Available Seats
+                                <label class="block text-gray-500 text-[10px] font-black uppercase tracking-widest mb-2 flex items-center gap-2" for="seats">
+                                    <iconify-icon icon="solar:users-group-rounded-bold-duotone" class="text-secondary"></iconify-icon> Available Seats
                                 </label>
                                 <input 
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" 
+                                    class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white transition-all" 
                                     id="seats" 
                                     name="seats" 
                                     type="number"
@@ -187,11 +190,11 @@
 
                             <!-- Price -->
                             <div>
-                                <label class="block text-gray-700 text-sm font-semibold mb-2" for="price">
-                                    Price per Seat (₹)
+                                <label class="block text-gray-500 text-[10px] font-black uppercase tracking-widest mb-2 flex items-center gap-2" for="price">
+                                    <iconify-icon icon="solar:wallet-money-bold-duotone" class="text-secondary"></iconify-icon> Price per Seat (₹)
                                 </label>
                                 <input 
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" 
+                                    class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white transition-all" 
                                     id="price" 
                                     name="price" 
                                     type="number"
@@ -203,32 +206,34 @@
                     </div>
 
                     <!-- Additional Notes -->
-                    <div class="mb-6">
-                        <label class="block text-gray-700 text-sm font-semibold mb-2" for="notes">
-                            Additional Notes (Optional)
+                    <div class="mb-10">
+                        <label class="block text-gray-500 text-[10px] font-black uppercase tracking-widest mb-2 flex items-center gap-2" for="notes">
+                            <iconify-icon icon="solar:notes-bold-duotone" class="text-secondary"></iconify-icon> Additional Notes (Optional)
                         </label>
                         <textarea 
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" 
+                            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white transition-all" 
                             id="notes" 
                             name="notes"
                             rows="3"
+                            placeholder="Add details about luggage, pickup specific points, etc."
                             maxlength="500"
                         ></textarea>
-                        <p class="text-xs text-gray-500 mt-1">Max 500 characters</p>
                     </div>
 
                     <!-- Submit Button -->
-                    <div class="flex gap-4">
+                    <div class="flex flex-col sm:flex-row gap-4">
                         <button 
                             type="submit"
-                            class="flex-1 bg-secondary text-white font-semibold py-3 px-6 rounded-lg hover:bg-cyan-500 transition-all hover:scale-105 shadow-lg"
+                            class="flex-1 bg-secondary text-white font-bold py-4 px-8 rounded-xl hover:bg-cyan-500 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-secondary/25 flex items-center justify-center gap-2"
                         >
+                            <iconify-icon icon="solar:check-circle-bold-duotone" class="text-xl"></iconify-icon>
                             Post Ride
                         </button>
                         <a 
                             href="/dashboard"
-                            class="flex-1 bg-gray-200 text-gray-700 font-semibold py-3 px-6 rounded-lg hover:bg-gray-300 transition-all text-center"
+                            class="flex-1 bg-gray-100 text-gray-600 font-bold py-4 px-8 rounded-xl hover:bg-gray-200 transition-all text-center flex items-center justify-center gap-2"
                         >
+                            <iconify-icon icon="solar:close-circle-bold-duotone" class="text-xl"></iconify-icon>
                             Cancel
                         </a>
                     </div>

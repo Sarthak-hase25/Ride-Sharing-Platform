@@ -1,11 +1,16 @@
+<!-- Iconify Script -->
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
 <nav class="bg-primary shadow-lg sticky top-0 z-50 backdrop-blur-sm bg-opacity-95">
     <div class="container mx-auto px-4">
         <div class="flex justify-between items-center py-4">
             <!-- Logo -->
-            <a href="<%= user ? '/dashboard' : '/' %>" class="text-xl md:text-2xl font-bold text-white flex items-center gap-2 hover:scale-105 transition-transform">
-                <span class="text-3xl">🚗</span>
-                <span class="bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
-                    RideShare
+            <a href="<%= user ? '/dashboard' : '/' %>" class="text-xl md:text-2xl font-bold text-white flex items-center gap-3 hover:scale-105 transition-transform group">
+                <div class="flex items-center justify-center p-2 bg-gradient-to-br from-secondary to-cyan-500 rounded-xl shadow-lg shadow-secondary/20 group-hover:rotate-6 transition-transform">
+                    <iconify-icon icon="solar:car-bold-duotone" class="text-3xl text-white"></iconify-icon>
+                </div>
+                <span class="bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent font-extrabold tracking-tight">
+                    WayMate
                 </span>
             </a>
             
@@ -20,50 +25,92 @@
             <ul class="hidden md:flex gap-8 items-center">
                 <% if (user) { %>
                 <!-- Logged in menu -->
-                <li><a href="/dashboard" class="text-gray-300 hover:text-secondary transition-colors font-medium">Dashboard</a></li>
-                <li><a href="/rides" class="text-gray-300 hover:text-secondary transition-colors font-medium">Find Rides</a></li>
-                <li><a href="/rides/my-rides" class="text-gray-300 hover:text-secondary transition-colors font-medium">My Rides</a></li>
-                <li><a href="/rides/my-bookings" class="text-gray-300 hover:text-secondary transition-colors font-medium">My Bookings</a></li>
+                <li><a href="/dashboard" class="flex items-center gap-2 text-gray-300 hover:text-secondary transition-colors font-medium">
+                    <iconify-icon icon="solar:widget-bold-duotone"></iconify-icon> Dashboard
+                </a></li>
+                <li><a href="/rides" class="flex items-center gap-2 text-gray-300 hover:text-secondary transition-colors font-medium">
+                    <iconify-icon icon="solar:magnifer-bold-duotone"></iconify-icon> Find Rides
+                </a></li>
+                <li><a href="/rides/my-rides" class="flex items-center gap-2 text-gray-300 hover:text-secondary transition-colors font-medium">
+                    <iconify-icon icon="solar:steering-wheel-bold-duotone"></iconify-icon> My Rides
+                </a></li>
+                <li><a href="/rides/my-bookings" class="flex items-center gap-2 text-gray-300 hover:text-secondary transition-colors font-medium">
+                    <iconify-icon icon="solar:calendar-date-bold-duotone"></iconify-icon> My Bookings
+                </a></li>
                 <li>
                     <div class="relative group">
-                        <button class="flex items-center gap-2 text-gray-300 hover:text-secondary transition-colors font-medium">
-                            <span>Hi, <%= user.name.split(' ')[0] %>!</span>
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
+                        <button class="flex items-center gap-2 text-gray-300 hover:text-secondary transition-colors font-medium px-3 py-1.5 rounded-lg bg-white/5 border border-white/10">
+                            <div class="w-8 h-8 bg-secondary rounded-full flex items-center justify-center text-white font-bold text-sm">
+                                <%= user.name.charAt(0).toUpperCase() %>
+                            </div>
+                            <span><%= user.name.split(' ')[0] %></span>
+                            <iconify-icon icon="solar:alt-arrow-down-bold-duotone" class="text-xs"></iconify-icon>
                         </button>
-                        <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-                            <a href="/profile" class="block px-4 py-3 text-gray-700 hover:bg-light rounded-t-lg">👤 My Profile</a>
-                            <a href="/logout" class="block px-4 py-3 text-red-600 hover:bg-red-50 rounded-b-lg">🚪 Logout</a>
+                        <div class="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all border border-gray-100 overflow-hidden">
+                            <a href="/profile" class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-light transition-colors">
+                                <iconify-icon icon="solar:user-circle-bold-duotone" class="text-xl text-secondary"></iconify-icon> My Profile
+                            </a>
+                            <div class="h-px bg-gray-100 mx-2"></div>
+                            <a href="/logout" class="flex items-center gap-3 px-4 py-3 text-red-600 hover:bg-red-50 transition-colors">
+                                <iconify-icon icon="solar:logout-bold-duotone" class="text-xl"></iconify-icon> Logout
+                            </a>
                         </div>
                     </div>
                 </li>
                 <% } else { %>
                     <!-- Guest menu -->
-                    <li><a href="/" class="text-gray-300 hover:text-secondary transition-colors font-medium">Home</a></li>
-                    <li><a href="/rides" class="text-gray-300 hover:text-secondary transition-colors font-medium">Find Rides</a></li>
-                    <li><a href="/login" class="text-gray-300 hover:text-secondary transition-colors font-medium">Login</a></li>
-                    <li><a href="/signup" class="bg-secondary text-white px-6 py-2.5 rounded-lg hover:bg-cyan-500 transition-all font-semibold shadow-lg shadow-secondary/30">Sign Up</a></li>
+                    <li><a href="/" class="flex items-center gap-2 text-gray-300 hover:text-secondary transition-colors font-medium">
+                        <iconify-icon icon="solar:home-2-bold-duotone"></iconify-icon> Home
+                    </a></li>
+                    <li><a href="/rides" class="flex items-center gap-2 text-gray-300 hover:text-secondary transition-colors font-medium">
+                        <iconify-icon icon="solar:magnifer-bold-duotone"></iconify-icon> Find Rides
+                    </a></li>
+                    <li><a href="/login" class="flex items-center gap-2 text-gray-300 hover:text-secondary transition-colors font-medium">
+                        <iconify-icon icon="solar:login-bold-duotone"></iconify-icon> Login
+                    </a></li>
+                    <li><a href="/signup" class="flex items-center gap-2 bg-secondary text-white px-6 py-2.5 rounded-xl hover:bg-cyan-500 transition-all font-semibold shadow-lg shadow-secondary/30 hover:scale-105 active:scale-95">
+                        <iconify-icon icon="solar:user-plus-bold-duotone"></iconify-icon> Sign Up
+                    </a></li>
                 <% } %>
             </ul>
         </div>
         
         <!-- Mobile menu (hidden by default) -->
-        <ul id="mobile-menu" class="hidden md:hidden pb-4 space-y-3">
+        <ul id="mobile-menu" class="hidden md:hidden pb-6 space-y-3 pt-4 border-t border-white/10 mt-4">
             <% if (user) { %>
                 <!-- Logged in mobile menu -->
-                <li><a href="/dashboard" class="block bg-slate-800 text-white hover:bg-slate-700 transition-colors py-3 px-4 rounded-lg text-center font-medium">Dashboard</a></li>
-                <li><a href="/rides" class="block bg-slate-800 text-white hover:bg-slate-700 transition-colors py-3 px-4 rounded-lg text-center font-medium">Find Rides</a></li>
-                <li><a href="/rides/my-rides" class="block bg-slate-800 text-white hover:bg-slate-700 transition-colors py-3 px-4 rounded-lg text-center font-medium">My Rides</a></li>
-                <li><a href="/rides/my-bookings" class="block bg-slate-800 text-white hover:bg-slate-700 transition-colors py-3 px-4 rounded-lg text-center font-medium">My Bookings</a></li>
-                <li><a href="/profile" class="block bg-slate-800 text-white hover:bg-slate-700 transition-colors py-3 px-4 rounded-lg text-center font-medium">My Profile</a></li>
-                <li><a href="/logout" class="block bg-red-500 text-white px-4 py-3 rounded-lg hover:bg-red-600 transition-colors text-center font-semibold">Logout</a></li>
+                <li><a href="/dashboard" class="flex items-center gap-3 bg-slate-800 text-white hover:bg-slate-700 transition-colors py-3.5 px-4 rounded-xl font-medium">
+                    <iconify-icon icon="solar:widget-bold-duotone" class="text-xl text-secondary"></iconify-icon> Dashboard
+                </a></li>
+                <li><a href="/rides" class="flex items-center gap-3 bg-slate-800 text-white hover:bg-slate-700 transition-colors py-3.5 px-4 rounded-xl font-medium">
+                    <iconify-icon icon="solar:magnifer-bold-duotone" class="text-xl text-secondary"></iconify-icon> Find Rides
+                </a></li>
+                <li><a href="/rides/my-rides" class="flex items-center gap-3 bg-slate-800 text-white hover:bg-slate-700 transition-colors py-3.5 px-4 rounded-xl font-medium">
+                    <iconify-icon icon="solar:steering-wheel-bold-duotone" class="text-xl text-secondary"></iconify-icon> My Rides
+                </a></li>
+                <li><a href="/rides/my-bookings" class="flex items-center gap-3 bg-slate-800 text-white hover:bg-slate-700 transition-colors py-3.5 px-4 rounded-xl font-medium">
+                    <iconify-icon icon="solar:calendar-date-bold-duotone" class="text-xl text-secondary"></iconify-icon> My Bookings
+                </a></li>
+                <li><a href="/profile" class="flex items-center gap-3 bg-slate-800 text-white hover:bg-slate-700 transition-colors py-3.5 px-4 rounded-xl font-medium">
+                    <iconify-icon icon="solar:user-circle-bold-duotone" class="text-xl text-secondary"></iconify-icon> My Profile
+                </a></li>
+                <li><a href="/logout" class="flex items-center gap-3 bg-red-500/10 text-red-500 border border-red-500/20 px-4 py-3.5 rounded-xl hover:bg-red-500/20 transition-colors font-bold">
+                    <iconify-icon icon="solar:logout-bold-duotone" class="text-xl"></iconify-icon> Logout
+                </a></li>
             <% } else { %>
                 <!-- Guest mobile menu -->
-                <li><a href="/" class="block bg-slate-800 text-white hover:bg-slate-700 transition-colors py-3 px-4 rounded-lg text-center font-medium">Home</a></li>
-                <li><a href="/rides" class="block bg-slate-800 text-white hover:bg-slate-700 transition-colors py-3 px-4 rounded-lg text-center font-medium">Find Rides</a></li>
-                <li><a href="/login" class="block bg-slate-800 text-white hover:bg-slate-700 transition-colors py-3 px-4 rounded-lg text-center font-medium">Login</a></li>
-                <li><a href="/signup" class="block bg-secondary text-white px-4 py-3 rounded-lg hover:bg-cyan-500 transition-colors text-center font-semibold shadow-lg">Sign Up</a></li>
+                <li><a href="/" class="flex items-center gap-3 bg-slate-800 text-white hover:bg-slate-700 transition-colors py-3.5 px-4 rounded-xl font-medium">
+                    <iconify-icon icon="solar:home-2-bold-duotone" class="text-xl text-secondary"></iconify-icon> Home
+                </a></li>
+                <li><a href="/rides" class="flex items-center gap-3 bg-slate-800 text-white hover:bg-slate-700 transition-colors py-3.5 px-4 rounded-xl font-medium">
+                    <iconify-icon icon="solar:magnifer-bold-duotone" class="text-xl text-secondary"></iconify-icon> Find Rides
+                </a></li>
+                <li><a href="/login" class="flex items-center gap-3 bg-slate-800 text-white hover:bg-slate-700 transition-colors py-3.5 px-4 rounded-xl font-medium">
+                    <iconify-icon icon="solar:login-bold-duotone" class="text-xl text-secondary"></iconify-icon> Login
+                </a></li>
+                <li><a href="/signup" class="flex items-center justify-center gap-3 bg-secondary text-white px-4 py-4 rounded-xl hover:bg-cyan-500 transition-colors font-bold shadow-lg shadow-secondary/20">
+                    <iconify-icon icon="solar:user-plus-bold-duotone" class="text-xl"></iconify-icon> Sign Up
+                </a></li>
             <% } %>
         </ul>
     </div>
